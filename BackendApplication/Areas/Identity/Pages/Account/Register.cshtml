@@ -1,0 +1,77 @@
+﻿@page
+@model RegisterModel
+<style>
+    body {
+        background: #870000; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #190A05, #870000); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+
+    h1 {
+        color: white;
+    }
+
+    h2 {
+        color: white;
+    }
+    hr{
+        color:white;
+    }
+
+    #btne{
+        background: #f12711; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #f5af19, #f12711); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg " style="background-color:#f12711">Register</button>
+        </form>
+    </div>
+    <div class="col-md-2 ">
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__wobble" src="/images/eCOM LOGO2.png"  alt="AdminLTELogo" height="540px" width="640px">
+            </div>
+
+
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

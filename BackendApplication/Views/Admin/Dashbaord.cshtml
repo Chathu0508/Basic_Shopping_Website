@@ -1,0 +1,120 @@
+﻿
+    @model BackendApplication.Models.DTOs.DashboardDto
+<style>
+    body {
+        background-image: url('../images/bgground2.jpg');
+    }
+</style>
+
+    @{
+    }
+    <div>
+        <br />
+        <div class="text-center">
+            <h1>Customer Order Status</h1>
+        </div>
+        <div class='card mb-6 shadow'>
+            <div id="container ">
+                <br />
+                <main style="text-align: center;">
+                    <div class="container-fluid px-4">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6" id="left">
+                                <div class="card box-shawdow bg-primary text-white mb-4">
+                                    <div class="card-body">
+                                        Pending Customer orders
+                                    </div>
+                                    <div class=' row mx-0 d-flex jusitify-content-center'>
+                                        <div class='col-md-12 d-flex justify-content-center'>
+
+                                        <label class="text-center " id="size"> @Model.PendingOrders</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-secondary" href="/Orders/Index">
+                                            <i class="bi bi-skip-forward-fill"></i> View Details
+                                        </a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6" id="left">
+                                <div class="card box-shawdow bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        Shipped Customer orders
+                                    </div>
+                                    <div class=' row mx-0 d-flex jusitify-content-center'>
+                                        <div class='col-md-12 d-flex justify-content-center'>
+                                        <label class="text-center " id="size"> @Model.ShippedOrders</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-secondary" href="/Orders/Index">
+                                           <i class="bi bi-skip-forward-fill"></i>  View Details
+                                        </a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6" id="left">
+                                <div class="card box-shawdow bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        Delivered Customer orders
+                                    </div>
+                                    <div class=' row mx-0 d-flex jusitify-content-center'>
+                                        <div class='col-md-12 d-flex justify-content-center'>
+                                        <label class="text-center " id="size"> @Model.DeliveredOrders</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-secondary" href="/Orders/Index">
+                                          <i class="bi bi-skip-forward-fill"></i>   View Details
+                                        </a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6" id="left">
+                                <div class="card box-shawdow bg-danger text-white mb-4">
+                                    <div class="card-body">
+                                        Retruned Customer orders
+                                    </div>
+                                    <div class=' row mx-0 d-flex jusitify-content-center'>
+                                        <div class='col-md-12 d-flex justify-content-center'>
+                                        <label class="text-center " id="size"> @Model.RetrunedOrders</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-secondary" href="/Orders/Index">
+                                         <i class="bi bi-skip-forward-fill"></i> View Details
+                                        </a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6" id="left">
+                                <div class="card box-shawdow bg-danger text-white mb-4">
+                                    <div class="card-body">
+                                        Refund Customer orders
+                                    </div>
+                                    <div class=' row mx-0 d-flex jusitify-content-center'>
+                                        <div class='col-md-12 d-flex justify-content-center'>
+                                        <label class="text-center " id="size"> @Model.RefundOrders</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-secondary" href="/Orders/Index">
+                                           <i class="bi bi-skip-forward-fill"></i>  View Details
+                                        </a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+

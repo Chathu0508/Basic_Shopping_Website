@@ -1,0 +1,75 @@
+﻿@model BackendApplication.Models.Book
+
+@{
+}
+
+
+
+
+<div>
+    <br />
+    <p>
+        <a class="btn btn-secondary text-" href="/Books/Index"><i class="bi bi-skip-backward-fill"> </i> Back to Main page</a>
+    </p>
+</div>
+
+<h1>Production Adding</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="BookName" class="control-label"></label>*@            
+                <label class="form-label">Product Name</label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="AuthorName" class="control-label"></label>*@
+                <label class="form-label">Product's Model type</label>
+
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input type="file" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                @*<label asp-for="GenreId" class="control-label"></label>*@
+                <label class="form-label">Product's Category type</label>
+
+                <select asp-for="GenreId" class ="form-control" asp-items="ViewBag.GenreId"></select>
+            </div>
+            <br />
+            <div class="form-group text-center" >
+                <input type="submit" value="Add product" class="btn btn-secondary"/>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div >
+
+</div>
+<br />
+@*<div>
+    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary" href="/Books/Index"><i class="bi bi-skip-backward-fill"></i></a>
+</div>
+*@

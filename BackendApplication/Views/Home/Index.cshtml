@@ -1,0 +1,133 @@
+﻿@model BookDisplayModel
+<style>
+    body{
+        background-image: url('../images/bgground.jpg');
+    }
+</style>
+@{
+
+}
+<div class="my-2">
+    <form asp-action="Index" id="home" class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+            <label class="visually-hidden" for="genreId">Category</label>
+            <select class="form-select" id="genreId" name="genreId">
+                <option selected>Choose...</option>
+                @foreach (var genre in Model.Genres)
+                {
+                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
+                }
+            </select>
+        </div>
+        <div class="col-12">
+            <label class="visually-hidden" for="sterm">Search by item</label>
+            <div class="input-group">
+                <div class="input-group-text"></div>
+                <input type="text" class="form-control" value="@Model.STerm" id="sterm" name="sterm" placeholder="Search by item">
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-dark">Filter</button>
+            <a href="/Home/Index" type="reset" class="btn btn-secondary"><i class="bi bi-x-diamond-fill"></i></a>
+        </div>
+    </form>
+</div>
+
+<div class="w-100 mt-4 d-flex flex-wrap shadow">
+    @foreach (var book in Model.Books)
+    {
+        <br />
+
+        <div class="card mx-4 mb-4" style="width: 16rem; ">
+            @if (string.IsNullOrEmpty(book.Image))
+            {
+                <img style="width:80%;height:200px" src="/images/NoImage.png" class="card-img-top" alt="...">
+
+            }
+            else
+            {
+                <img style="254px;height:300px" src="/images/@book.Image" class="card-img-top align-items-center" alt="...">
+            }
+            <div class="card-body bg-dark" style="color:white">
+                <div>
+                    <h5 class="card-title text-center"> @book.BookName</h5>
+                </div>
+                <hr>
+                <div>
+                    <p class="card-text">
+                        Model: <b>@book.AuthorName</b>
+                        <br />
+                        Category:<b>@book.GenreName</b>
+                        <br />
+                        Price:Rs. <b>@book.Price.00</b>
+                    </p>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button type="button" onclick="add(@book.Id)" class="btn btn-secondary ">Add to cart</button>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <a class="btn btn-secondary" href="/Books/Details/@book.Id"><i class="bi bi-file-bar-graph-fill" style="color:white"></i></a>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+@section Scripts{
+    <script>
+        //alert("hello");
+        async function add(bookId) {
+           
+            var usernameEl = document.getElementById("username");
+           
+            if (usernameEl != null) {
+               
+                try {
+                   
+                    var response = await fetch('/Cart/AddItem?bookId=' + parseInt(bookId));
+
+                    if (response.status == 200) {
+                        var result = await response.json();
+                        console.log(result);
+                        var cartCountEl = document.getElementById("cartCount");
+                        cartCountEl.innerHTML = result;
+                        window.location.href = "#cartCount";
+                    }
+
+                } catch (err) {
+                    console.log(err);
+                }
+            }else{
+                window.location.href = "/Identity/Account/Login";
+            }
+
+        }
+
+        function filter(item,name,type)
+        {
+            var data =[];
+            if(item.length > 0)
+            {
+                
+                var isexit = data.some((e) => e.AuthorName.toLowerCase() == name.toLowerCase() && e.GenreName.toLowerCase());
+                if(!isexit)
+                {
+                    data.push(item)
+                }
+
+            }else
+            {
+            return data; 
+            }
+        }
+    </script>
+
+
+}
